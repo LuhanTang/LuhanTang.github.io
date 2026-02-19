@@ -92,7 +92,7 @@ body {
 
 .hero {
   position: relative;
-  min-height: clamp(300px, 46vh, 500px);
+  min-height: clamp(360px, 58vh, 680px);
   background-image: url("assets/hero.jpg");
   background-size: cover;
   background-position: center 100%;
@@ -247,7 +247,7 @@ a {
 
   .hero {
     background-attachment: scroll;
-    min-height: 260px;
+    min-height: 320px;
   }
 
   .intro-section {
