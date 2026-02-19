@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 780" role="img" aria-label="Hero placeholder">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#8db1c3"/>
+      <stop offset="70%" stop-color="#4c6f86"/>
+      <stop offset="100%" stop-color="#233747"/>
+    </linearGradient>
+  </defs>
+  <rect width="1800" height="780" fill="url(#sky)"/>
+  <polygon points="0,540 280,300 530,520" fill="#2f4c5c" opacity="0.85"/>
+  <polygon points="320,560 780,230 1180,560" fill="#24414f" opacity="0.9"/>
+  <polygon points="960,570 1370,280 1800,570" fill="#1f3442" opacity="0.95"/>
+  <rect y="570" width="1800" height="210" fill="#102230"/>
+  <text x="900" y="700" text-anchor="middle" fill="#e8f3fa" font-size="36" font-family="Georgia, serif" opacity="0.9">
+    Replace with your own landscape photo: assets/hero.jpg
+  </text>
+</svg>
