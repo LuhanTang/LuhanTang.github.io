@@ -92,7 +92,7 @@ body {
 
 .hero {
   position: relative;
-  min-height: clamp(320px, 52vh, 560px);
+  min-height: clamp(240px, 40vh, 420px);
   background-image: url("assets/hero.jpg");
   background-size: cover;
   background-position: center 100%;
