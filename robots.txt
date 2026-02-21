@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://luhantang.github.io/sitemap.xml
+Sitemap: https://luhantang.github.io/sitemap.txt
