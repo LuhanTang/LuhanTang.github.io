@@ -67,7 +67,7 @@ body {
 .nav-links a {
   text-decoration: none;
   color: var(--ink);
-  font-size: clamp(1.9rem, 2.2vw, 2.35rem);
+  font-size: 1.25rem;
   font-family: "Times New Roman", Georgia, "Noto Serif SC", serif;
   font-weight: 500;
   position: relative;
@@ -248,7 +248,7 @@ a {
   }
 
   .nav-links a {
-    font-size: 1.5rem;
+    font-size: 1.08rem;
   }
 
   .hero {
