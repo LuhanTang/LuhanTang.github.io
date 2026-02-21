@@ -126,6 +126,12 @@ body {
   padding: 18px;
 }
 
+.avatar-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .avatar-card img {
   width: 100%;
   display: block;
@@ -134,7 +140,7 @@ body {
 }
 
 .social-links {
-  margin-top: 10px;
+  margin-top: 12px;
   display: flex;
   gap: 8px;
   justify-content: center;
