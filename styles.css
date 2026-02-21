@@ -121,9 +121,9 @@ body {
 }
 
 .avatar-card {
-  background: rgba(248, 251, 255, 0.28);
-  border: 1px solid var(--line);
-  padding: 18px;
+  background: transparent;
+  border: 0;
+  padding: 0;
 }
 
 .avatar-column {
@@ -137,6 +137,8 @@ body {
   display: block;
   aspect-ratio: 3 / 4;
   object-fit: cover;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .social-links {
