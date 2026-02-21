@@ -112,10 +112,119 @@ body {
   z-index: -1;
 }
 
+.page-hero {
+  position: relative;
+  min-height: clamp(260px, 42vh, 460px);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  isolation: isolate;
+}
+
+.page-hero-publications {
+  background-image: url("assets/IMG_8885.jpg");
+}
+
+.page-hero-teaching {
+  background-image: url("assets/IMG_8886.JPG");
+}
+
+.page-hero-gallery {
+  background-image: url("assets/IMG_8642.JPG");
+}
+
+.gallery-page {
+  background: linear-gradient(180deg, #bad0de 0%, #b3c8d8 44%, #a9c1d2 100%);
+}
+
+.gallery-intro {
+  position: relative;
+  margin-top: 18px;
+  padding: clamp(56px, 9vw, 110px) 0 clamp(54px, 8vw, 96px);
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(122, 168, 196, 0.3), transparent 38%),
+    radial-gradient(circle at 82% 24%, rgba(185, 210, 226, 0.18), transparent 40%),
+    linear-gradient(135deg, rgba(7, 18, 30, 0.92), rgba(14, 32, 50, 0.88));
+}
+
+.gallery-intro::before {
+  content: "";
+  position: absolute;
+  inset: -30px;
+  background-image: url("assets/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+  filter: blur(7px);
+  transform: scale(1.08);
+  z-index: -1;
+}
+
+.gallery-intro-wrap {
+  max-width: 880px;
+}
+
+.gallery-kicker {
+  margin: 0 0 24px;
+  color: rgba(236, 245, 253, 0.9);
+  letter-spacing: 0.7px;
+  font-size: clamp(0.78rem, 1vw, 0.9rem);
+  font-weight: 600;
+}
+
+.gallery-intro h1 {
+  margin: 0;
+  color: #f6fbff;
+  font-size: clamp(1.6rem, 3.4vw, 2.9rem);
+  line-height: 1.15;
+  font-family: "Playfair Display", "Noto Serif SC", serif;
+}
+
+.gallery-intro h1 span {
+  color: #89c4ef;
+}
+
+.gallery-lead {
+  margin: 28px 0 0;
+  max-width: 760px;
+  color: rgba(236, 245, 253, 0.92);
+  font-size: clamp(0.92rem, 1.15vw, 1.04rem);
+}
+
+.gallery-showcase {
+  margin-top: 34px;
+  border: 0;
+  width: min(896px, 92vw);
+  padding: 0 0 8px;
+}
+
+.gallery-polaroid-grid {
+  column-count: 3;
+  column-gap: 14px;
+}
+
+.gallery-card {
+  margin: 0 0 14px;
+  background: transparent;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  break-inside: avoid;
+}
+
+.gallery-card img {
+  width: 100%;
+  display: block;
+  height: auto;
+  border: 0;
+}
+
 .intro-section {
   margin-top: 36px;
   display: grid;
-  grid-template-columns: 320px 1fr;
+  grid-template-columns: 280px 1fr;
   gap: clamp(22px, 4vw, 56px);
   align-items: center;
 }
@@ -144,13 +253,13 @@ body {
 .social-links {
   margin-top: 12px;
   display: flex;
-  gap: 8px;
+  gap: 14px;
   justify-content: center;
 }
 
 .social-btn {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   border: 0;
   background: transparent;
   color: rgba(255, 255, 255, 0.96);
@@ -163,8 +272,8 @@ body {
 }
 
 .social-btn svg {
-  width: 18px;
-  height: 18px;
+  width: 25px;
+  height: 25px;
 }
 
 .social-btn:hover {
@@ -193,6 +302,7 @@ body {
 
 a {
   color: var(--link);
+  text-decoration: none;
 }
 
 .content-section {
@@ -231,15 +341,20 @@ a {
   align-items: center;
 }
 
+.pub-card + .pub-card {
+  margin-top: 28px;
+}
+
 .pub-figure-wrap {
   position: relative;
-  width: 80%;
+  width: 68%;
+  max-width: 360px;
   justify-self: start;
 }
 
 .pub-figure-img {
   width: 100%;
-  min-height: 240px;
+  min-height: 180px;
   object-fit: cover;
   border: 1px solid var(--line);
   display: block;
@@ -394,6 +509,11 @@ a {
     min-height: 320px;
   }
 
+  .page-hero {
+    background-attachment: scroll;
+    min-height: 240px;
+  }
+
   .intro-section {
     grid-template-columns: 1fr;
   }
@@ -415,6 +535,11 @@ a {
     grid-template-columns: 1fr;
   }
 
+  .gallery-polaroid-grid {
+    column-count: 2;
+    column-gap: 12px;
+  }
+
   .pub-card {
     grid-template-columns: 1fr;
   }
@@ -428,7 +553,8 @@ a {
   }
 
   .pub-figure-wrap {
-    width: 100%;
+    width: 82%;
+    max-width: 360px;
   }
 
   .footer-wrap {
@@ -437,5 +563,11 @@ a {
     justify-content: center;
     padding: 20px 0;
     min-height: unset;
+  }
+}
+
+@media (max-width: 640px) {
+  .gallery-polaroid-grid {
+    column-count: 1;
   }
 }
