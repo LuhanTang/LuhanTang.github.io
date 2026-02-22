@@ -428,6 +428,10 @@ a {
   background: rgba(248, 251, 255, 0.58);
 }
 
+.pub-btn + .pub-btn {
+  margin-left: 8px;
+}
+
 .pub-btn:hover {
   background: rgba(248, 251, 255, 0.9);
 }
