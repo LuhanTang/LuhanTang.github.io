@@ -436,6 +436,48 @@ a {
   background: rgba(248, 251, 255, 0.9);
 }
 
+.visitor-map-card {
+  margin-top: 24px;
+  padding: 18px;
+  border: 1px solid rgba(22, 35, 49, 0.2);
+  background: linear-gradient(180deg, rgba(236, 245, 252, 0.48), rgba(223, 236, 247, 0.35));
+  box-shadow: 0 10px 22px rgba(15, 31, 47, 0.08);
+}
+
+.visitor-map-header h3 {
+  margin: 0;
+  font-size: 1.06rem;
+  font-family: "Playfair Display", "Noto Serif SC", serif;
+}
+
+.visitor-map-header p {
+  margin: 6px 0 0;
+  font-size: 0.9rem;
+  color: rgba(22, 35, 49, 0.74);
+}
+
+.visitor-map-frame {
+  margin-top: 12px;
+  border: 1px solid rgba(22, 35, 49, 0.2);
+  min-height: 390px;
+  background:
+    radial-gradient(circle at 20% 24%, rgba(130, 189, 228, 0.35), rgba(190, 219, 240, 0.2) 42%, rgba(240, 247, 253, 0.28)),
+    linear-gradient(180deg, rgba(205, 229, 245, 0.42), rgba(218, 236, 249, 0.24));
+}
+
+.visitor-map-frame iframe {
+  width: 100%;
+  height: 390px;
+  border: 0;
+  display: block;
+}
+
+.visitor-map-note {
+  margin: 10px 0 0;
+  font-size: 0.82rem;
+  color: rgba(22, 35, 49, 0.7);
+}
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -567,6 +609,12 @@ a {
     justify-content: center;
     padding: 20px 0;
     min-height: unset;
+  }
+
+  .visitor-map-frame,
+  .visitor-map-frame iframe {
+    min-height: 300px;
+    height: 300px;
   }
 }
 
