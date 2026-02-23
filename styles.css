@@ -452,11 +452,11 @@ a {
 
 .visitor-map-frame {
   margin-top: 12px;
-  width: min(390px, 100%);
+  width: min(273px, 100%);
   margin-left: auto;
   margin-right: auto;
   border: 1px solid rgba(22, 35, 49, 0.2);
-  min-height: 160px;
+  min-height: 112px;
   overflow: hidden;
   background:
     radial-gradient(circle at 20% 24%, rgba(130, 189, 228, 0.35), rgba(190, 219, 240, 0.2) 42%, rgba(240, 247, 253, 0.28)),
@@ -468,7 +468,7 @@ a {
 .visitor-map-frame img,
 .visitor-map-frame > div {
   width: 100%;
-  height: 160px;
+  height: 112px;
   border: 0;
   display: block;
 }
@@ -611,8 +611,8 @@ a {
   .visitor-map-frame canvas,
   .visitor-map-frame img,
   .visitor-map-frame > div {
-    min-height: 140px;
-    height: 140px;
+    min-height: 98px;
+    height: 98px;
   }
 }
 
