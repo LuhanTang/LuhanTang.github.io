@@ -347,14 +347,14 @@ a {
 
 .pub-figure-wrap {
   position: relative;
-  width: 68%;
-  max-width: 360px;
+  width: clamp(220px, 28vw, 300px);
   justify-self: start;
 }
 
 .pub-figure-img {
   width: 100%;
-  min-height: 180px;
+  aspect-ratio: 16 / 10;
+  min-height: 0;
   object-fit: cover;
   border: 1px solid var(--line);
   display: block;
@@ -590,12 +590,12 @@ a {
   }
 
   .pub-figure-img {
-    min-height: 200px;
+    aspect-ratio: 16 / 10;
+    min-height: 0;
   }
 
   .pub-figure-wrap {
-    width: 82%;
-    max-width: 360px;
+    width: min(300px, 100%);
   }
 
   .footer-wrap {
