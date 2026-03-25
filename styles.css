@@ -25,6 +25,19 @@ body {
   line-height: 1.55;
 }
 
+.home-page {
+  font-family: "Roboto Serif", "Noto Serif SC", Georgia, serif;
+}
+
+.home-page .brand,
+.home-page .nav-links a,
+.home-page .intro-copy h1,
+.home-page .content-section h2,
+.home-page .pub-badge,
+.home-page .motto {
+  font-family: "Roboto Serif", "Noto Serif SC", Georgia, serif;
+}
+
 .wrap {
   width: min(1120px, 92vw);
   margin: 0 auto;
@@ -224,7 +237,7 @@ body {
 .intro-section {
   margin-top: 36px;
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: clamp(220px, 24vw, 250px) 1fr;
   gap: clamp(22px, 4vw, 56px);
   align-items: center;
 }
@@ -438,29 +451,21 @@ a {
 
 .visitor-map-card {
   margin-top: 24px;
-  padding: 18px;
-  border: 1px solid rgba(22, 35, 49, 0.2);
-  background: linear-gradient(180deg, rgba(236, 245, 252, 0.48), rgba(223, 236, 247, 0.35));
-  box-shadow: 0 10px 22px rgba(15, 31, 47, 0.08);
-}
-
-.visitor-map-header h3 {
-  margin: 0;
-  font-size: 1.06rem;
-  font-family: "Playfair Display", "Noto Serif SC", serif;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .visitor-map-frame {
-  margin-top: 12px;
+  margin-top: 0;
   width: min(328px, 100%);
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid rgba(22, 35, 49, 0.2);
+  border: 0;
   min-height: 134px;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 20% 24%, rgba(130, 189, 228, 0.35), rgba(190, 219, 240, 0.2) 42%, rgba(240, 247, 253, 0.28)),
-    linear-gradient(180deg, rgba(205, 229, 245, 0.42), rgba(218, 236, 249, 0.24));
+  background: transparent;
 }
 
 .visitor-map-frame iframe,
