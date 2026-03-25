@@ -347,6 +347,11 @@ a {
   color: rgba(22, 35, 49, 0.72);
 }
 
+.section-divider {
+  margin: 18px 0 22px;
+  border-top: 1px dashed var(--line);
+}
+
 .pub-card {
   display: grid;
   grid-template-columns: minmax(300px, 46%) 1fr;
