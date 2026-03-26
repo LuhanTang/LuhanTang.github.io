@@ -422,11 +422,19 @@ a {
   margin: 0 0 10px;
   font-size: 1.14rem;
   line-height: 1.3;
+  color: #2d6fad;
+  font-weight: 400;
 }
 
 .pub-authors {
   margin: 0 0 8px;
   font-size: 1rem;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.pub-authors strong {
+  font-weight: 400;
 }
 
 .pub-venue {
