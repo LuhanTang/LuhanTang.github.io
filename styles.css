@@ -271,8 +271,8 @@ body {
 }
 
 .social-btn {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border: 0;
   background: transparent;
   color: rgba(255, 255, 255, 0.96);
@@ -285,8 +285,8 @@ body {
 }
 
 .social-btn svg {
-  width: 25px;
-  height: 25px;
+  width: 28px;
+  height: 28px;
 }
 
 .social-btn:hover {
