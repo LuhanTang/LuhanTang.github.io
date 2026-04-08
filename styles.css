@@ -151,10 +151,13 @@ body {
 }
 
 .gallery-page .brand,
-.gallery-page .nav-links a,
+.gallery-page .nav-links a {
+  font-family: "Roboto Serif", "Noto Serif SC", Georgia, serif;
+}
+
 .gallery-page .gallery-intro h1,
 .gallery-page .gallery-lead {
-  font-family: "Roboto Serif", "Noto Serif SC", Georgia, serif;
+  font-family: "Times New Roman", Times, "Noto Serif SC", Georgia, serif;
 }
 
 .gallery-intro {
