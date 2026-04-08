@@ -26,7 +26,7 @@ body {
 }
 
 .home-page {
-  font-family: "Times New Roman", Times, "Noto Serif SC", Georgia, serif;
+  font-family: "Roboto Serif", "Noto Serif SC", Georgia, serif;
 }
 
 .home-page .brand,
@@ -35,7 +35,7 @@ body {
 .home-page .content-section h2,
 .home-page .pub-badge,
 .home-page .motto {
-  font-family: "Times New Roman", Times, "Noto Serif SC", Georgia, serif;
+  font-family: "Roboto Serif", "Noto Serif SC", Georgia, serif;
 }
 
 .wrap {
