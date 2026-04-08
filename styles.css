@@ -150,6 +150,13 @@ body {
   background: linear-gradient(180deg, #bad0de 0%, #b3c8d8 44%, #a9c1d2 100%);
 }
 
+.gallery-page .brand,
+.gallery-page .nav-links a,
+.gallery-page .gallery-intro h1,
+.gallery-page .gallery-lead {
+  font-family: "Roboto Serif", "Noto Serif SC", Georgia, serif;
+}
+
 .gallery-intro {
   position: relative;
   margin-top: 18px;
