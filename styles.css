@@ -201,11 +201,29 @@ body {
   margin: 0;
   color: #f6fbff;
   font-size: clamp(1.6rem, 3.4vw, 2.9rem);
-  line-height: 1.15;
+  line-height: 1.05;
+  font-family: "Playfair Display", "Noto Serif SC", serif;
+  font-weight: 600;
+}
+
+.gallery-page .gallery-intro h1,
+.gallery-page .gallery-lead {
   font-family: "Playfair Display", "Noto Serif SC", serif;
 }
 
 .gallery-intro h1 span {
+  color: #89c4ef;
+}
+
+.gallery-title-line {
+  display: block;
+}
+
+.gallery-intro h1 .gallery-title-main {
+  color: #f6fbff;
+}
+
+.gallery-intro h1 .gallery-title-main span {
   color: #89c4ef;
 }
 
