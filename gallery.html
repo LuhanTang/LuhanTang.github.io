@@ -15,7 +15,14 @@
     <link rel="apple-touch-icon" href="assets/profile.jpg" />
     <link rel="stylesheet" href="styles.css" />
     <style>
+      .gallery-polaroid-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
       .gallery-card img {
+        width: 100%;
+        display: block;
         opacity: 0;
         transition: opacity 0.4s ease;
       }
@@ -23,6 +30,7 @@
         opacity: 1;
       }
       .gallery-card {
+        margin: 0;
         background: rgba(160, 190, 210, 0.25);
         min-height: 60px;
       }
@@ -50,6 +58,16 @@
         letter-spacing: 1px;
       }
       #gallery-done.visible { display: block; }
+      @media (max-width: 900px) {
+        .gallery-polaroid-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      @media (max-width: 600px) {
+        .gallery-polaroid-grid {
+          grid-template-columns: 1fr;
+        }
+      }
     </style>
   </head>
   <body class="gallery-page">
@@ -204,46 +222,69 @@
         "img_1233.jpg",
       ];
 
-      const BASE  = "assets/gallery/";
-      const BATCH = 24;
-      let cursor  = 0;
+      const BASE = "assets/gallery/";
+      const COLUMNS = 3;
+      const BATCH_ROWS = 4;
+      const BATCH = COLUMNS * BATCH_ROWS;
+      let cursor = 0;
       let loading = false;
+      let orderedImages = [];
 
-      const grid     = document.getElementById("gallery-grid");
+      const grid = document.getElementById("gallery-grid");
       const sentinel = document.getElementById("gallery-sentinel");
-      const loader   = document.getElementById("gallery-loader");
-      const doneMsg  = document.getElementById("gallery-done");
+      const loader = document.getElementById("gallery-loader");
+      const doneMsg = document.getElementById("gallery-done");
 
-      // 图片进入视口时才真正加载（提前 200px）
-      const imgObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const img = entry.target;
-          img.src = img.dataset.src;
-          img.onload  = () => img.classList.add("loaded");
-          img.onerror = () => img.classList.add("loaded");
-          imgObserver.unobserve(img);
+      function buildCard(filename) {
+        const fig = document.createElement("figure");
+        fig.className = "gallery-card";
+
+        const img = document.createElement("img");
+        img.src = BASE + filename;
+        img.alt = filename.replace(/\.[^.]+$/, "");
+        img.width = 400;
+        img.loading = "eager";
+        img.decoding = "async";
+        img.onload = () => img.classList.add("loaded");
+        img.onerror = () => img.classList.add("loaded");
+
+        fig.appendChild(img);
+        return fig;
+      }
+
+      function classifyImage(filename) {
+        return new Promise((resolve) => {
+          const probe = new Image();
+          probe.onload = () => {
+            resolve({
+              filename,
+              portrait: probe.naturalHeight >= probe.naturalWidth,
+            });
+          };
+          probe.onerror = () => {
+            resolve({ filename, portrait: true });
+          };
+          probe.src = BASE + filename;
         });
-      }, { rootMargin: "200px 0px" });
+      }
+
+      async function buildOrderedImages() {
+        const classified = await Promise.all(IMAGES.map(classifyImage));
+        const portraits = classified.filter((item) => item.portrait).map((item) => item.filename);
+        const landscapes = classified.filter((item) => !item.portrait).map((item) => item.filename);
+        orderedImages = portraits.concat(landscapes);
+      }
 
       function renderBatch() {
-        if (loading || cursor >= IMAGES.length) return;
+        if (loading || cursor >= orderedImages.length) return;
         loading = true;
         loader.classList.add("visible");
 
-        const end = Math.min(cursor + BATCH, IMAGES.length);
+        const end = Math.min(cursor + BATCH, orderedImages.length);
         const fragment = document.createDocumentFragment();
 
         for (let i = cursor; i < end; i++) {
-          const fig = document.createElement("figure");
-          fig.className = "gallery-card";
-          const img = document.createElement("img");
-          img.dataset.src = BASE + IMAGES[i];
-          img.alt = IMAGES[i].replace(/\.[^.]+$/, "");
-          img.width = 400;
-          imgObserver.observe(img);
-          fig.appendChild(img);
-          fragment.appendChild(fig);
+          fragment.appendChild(buildCard(orderedImages[i]));
         }
 
         grid.appendChild(fragment);
@@ -251,34 +292,38 @@
         loading = false;
         loader.classList.remove("visible");
 
-        if (cursor >= IMAGES.length) {
+        if (cursor >= orderedImages.length) {
           sentinel.remove();
           doneMsg.classList.add("visible");
           batchObserver.disconnect();
         }
       }
 
-      // 滚动到底部时加载下一批
       const batchObserver = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) renderBatch();
-      }, { rootMargin: "400px 0px" });
+      }, { rootMargin: "500px 0px" });
 
-      batchObserver.observe(sentinel);
-
-      // 恢复上次滚动位置
-      const SCROLL_KEY  = "gallery_scroll";
+      const SCROLL_KEY = "gallery_scroll";
       const savedScroll = sessionStorage.getItem(SCROLL_KEY);
 
-      renderBatch(); // 首批
+      async function initGallery() {
+        loader.textContent = "Organizing photos...";
+        loader.classList.add("visible");
+        await buildOrderedImages();
+        loader.textContent = "Loading…";
+        batchObserver.observe(sentinel);
+        renderBatch();
 
-      if (savedScroll) {
-        const targetY = parseInt(savedScroll, 10);
-        const batches  = Math.ceil(targetY / (BATCH * 80)) + 1;
-        for (let b = 0; b < batches && cursor < IMAGES.length; b++) renderBatch();
-        requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo(0, targetY)));
+        if (savedScroll) {
+          const targetY = parseInt(savedScroll, 10);
+          const batches = Math.ceil(targetY / (BATCH_ROWS * 240)) + 1;
+          for (let b = 0; b < batches && cursor < orderedImages.length; b++) renderBatch();
+          requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo(0, targetY)));
+        }
       }
 
-      // 保存滚动位置
+      initGallery();
+
       let scrollTimer;
       window.addEventListener("scroll", () => {
         clearTimeout(scrollTimer);
